@@ -29,13 +29,10 @@ export default function Display() {
 
       <Grid item xs={6} md={2}>
         {statusDownload === USER_FETCH_REQUESTED
-
         && <CircularProgress />
         }
         {statusDownload === USER_FETCH_SUCCEEDED
-
         && (
-
           <>
             <div>
               <Typography variant="h5">
@@ -71,22 +68,19 @@ export default function Display() {
                   </ListItem>
 
                 </div>
-
               )) }
-
             {repositories[0]
             && (
             <Typography variant="h6">
               Repositories
             </Typography>
             )}
-            { !organizations[0]
+            { !repositories[0]
                   && (
                   <Typography variant="h6">
               No repositories
                   </Typography>
                   )
-
             }
             <List>
               {repositories.map(item => (
