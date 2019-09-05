@@ -2,9 +2,8 @@ import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
-import Display from '.';
+import Search from '.';
 import { store } from '../../store';
-
 
 let container = null;
 beforeEach(() => {
@@ -18,13 +17,13 @@ afterEach(() => {
   container = null;
 });
 
-it('renders display', () => {
+it('render search', () => {
   act(() => {
     render(
       <Provider store={store}>
-        <Display />
+        <Search />
       </Provider>, container,
     );
   });
-  expect(container.textContent).toBe('');
+  expect(container.textContent).toBe('UserName from Github');
 });

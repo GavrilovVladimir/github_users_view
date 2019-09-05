@@ -1,16 +1,14 @@
-import sagaWatcher  from './';
 import { takeLatest } from 'redux-saga/effects';
-import {USER_FETCH_REQUESTED} from "../action/constant";
-import sagaFetch from "./sagaFetch/";
+import sagaWatcher from '.';
+import { USER_FETCH_REQUESTED } from '../action/constant';
+import sagaFetch from './sagaFetch';
 
 
-describe('reducer', () => {
+describe('sagaWatcher', () => {
+  it('call sagaWatcher ', () => {
+    const action = {};
+    const gen = sagaWatcher(action);
 
-    it('should return the initial state', () => {
-        const action ={}
-        const gen = sagaWatcher(action);
-
-        expect(gen.next().value).toEqual(takeLatest(USER_FETCH_REQUESTED, sagaFetch));
-
-    });
+    expect(gen.next().value).toEqual(takeLatest(USER_FETCH_REQUESTED, sagaFetch));
+  });
 });

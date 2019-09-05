@@ -6,26 +6,19 @@ import Header from './index';
 
 let container = null;
 beforeEach(() => {
-  // подготавливаем DOM-элемент, куда будем рендерить
   container = document.createElement('div');
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // подчищаем после завершения
   unmountComponentAtNode(container);
   container.remove();
   container = null;
 });
 
-it('renders with or without a name', () => {
+it('renders header', () => {
   act(() => {
     render(<Header />, container);
   });
-  expect(container.textContent).toBe("ЪУЪ Hi!");
-
-
+  expect(container.textContent).toBe('GitHub Users');
 });
-
-
-
