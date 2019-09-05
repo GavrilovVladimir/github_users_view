@@ -1,13 +1,10 @@
 import { call, put, all } from 'redux-saga/effects';
 import axios from 'axios';
 import { USER_FETCH_SUCCEEDED, USER_FETCH_FAILED } from '../../action/constant';
-
+import { API } from '../../constant';
 
 function fetchData(user, url = '') {
-  return axios({
-    method: 'get',
-    url: `https://api.github.com/users/${user}${url}`,
-  });
+  return axios(`${API}${user}${url}`);
 }
 
 export default function* sagaFetch(action) {

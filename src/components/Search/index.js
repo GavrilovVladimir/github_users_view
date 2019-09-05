@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import userRequest from '../../store/action-creator';
 
 
-export default function Search() {
+function Search() {
   const [user, setText] = useState('');
   const onChange = ({ target: { value } }) => {
     if (!value.match('/')) setText(value);
@@ -18,7 +18,7 @@ export default function Search() {
 
   const submit = (event) => {
     event.preventDefault();
-    dispatch(userRequest(user));
+    if (user) dispatch(userRequest(user));
   };
 
   return (
@@ -47,3 +47,5 @@ export default function Search() {
     </div>
   );
 }
+
+export default memo(Search);

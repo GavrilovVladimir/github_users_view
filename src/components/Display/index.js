@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import { useSelector } from 'react-redux';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -10,10 +10,11 @@ import List from '@material-ui/core/List';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+
 import { USER_FETCH_REQUESTED, USER_FETCH_SUCCEEDED, USER_FETCH_FAILED } from '../../store/action/constant';
 
 
-export default function Display() {
+function Display() {
   const {
     repositories, organizations, statusDownload, userName, error,
   } = useSelector(state => ({
@@ -41,18 +42,18 @@ export default function Display() {
                 {userName}
               </Typography>
             </div>
-            {organizations[0]
-                && (
+            {organizations.length
+
+              ? (
                 <Typography variant="h6">
                   Organizations
                 </Typography>
-                )}
-            { !organizations[0]
-                  && (
-                  <Typography variant="h6">
+              )
+              : (
+                <Typography variant="h6">
                   No Organizations
-                  </Typography>
-                  )
+                </Typography>
+              )
                 }
               { organizations.map(item => (
                 <div key={item}>
@@ -69,22 +70,22 @@ export default function Display() {
 
                 </div>
               )) }
-            {repositories[0]
-            && (
-            <Typography variant="h6">
+            {repositories.length
+
+              ? (
+                <Typography variant="h6">
               Repositories
-            </Typography>
-            )}
-            { !repositories[0]
-                  && (
-                  <Typography variant="h6">
+                </Typography>
+              )
+              : (
+                <Typography variant="h6">
               No repositories
-                  </Typography>
-                  )
+                </Typography>
+              )
             }
             <List>
-              {repositories.map(item => (
 
+              {repositories.map(item => (
                 <div key={item}>
                   <ListItem>
                     <ListItemIcon>
@@ -116,3 +117,5 @@ export default function Display() {
 
   );
 }
+
+export default memo(Display);

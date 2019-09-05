@@ -1,5 +1,5 @@
 import { takeLatest } from 'redux-saga/effects';
-import sagaFetch from './sagaFetch/';
+import sagaFetch from './sagaFetch';
 import { USER_FETCH_REQUESTED } from '../action/constant';
 
 

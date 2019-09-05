@@ -1,9 +1,9 @@
 import { USER_FETCH_SUCCEEDED, USER_FETCH_REQUESTED, USER_FETCH_FAILED } from '../action/constant';
 
 export const initialState = {
-  userName: 'anon',
-  repositories: ['one', 'two'],
-  organizations: ['one', 'two'],
+  userName: '',
+  repositories: [],
+  organizations: [],
   statusDownload: '',
   error: '',
 };
